@@ -1,0 +1,47 @@
+service: discovery-api
+
+custom:
+  includeDependencies:
+    always:
+      - 'utils/**'
+  environment:
+    JWT_SECRET: dfwVoAhNXa
+
+plugins:
+  - serverless-plugin-include-dependencies
+
+package:
+  individually: true
+  exclude:
+    - node_modules/**
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: eu-west-1
+  memory: 128
+  environment: "${self:custom.environment}"
+  iamRoleStatements:
+   - Effect: "Allow"
+     Action:
+       - "*"
+     Resource: "*"
+  cors: true
+  endpointType: REGIONAL
+  apiKeys:
+    - "MyAPIKey"
+  usagePlan:
+    quota:
+      limit: 5000
+      offset: 2
+      period: MONTH
+    throttle:
+      burstLimit: 200
+      rateLimit: 100
+
+functions:
+  - "${file(./ec2/ec2.yml)}"
+  - "${file(./s3/s3.yml)}"
+  - "${file(./billing/billing.yml)}"
+  - "${file(./authorizers/authorizers.yml)}"

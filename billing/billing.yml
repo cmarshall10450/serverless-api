@@ -1,0 +1,7 @@
+generateCostReport:
+  handler: billing/generateCostReport.handler
+  region: us-east-1
+  events:
+    - http:
+        path: billing/generateCostReport
+        method: get

@@ -1,0 +1,24 @@
+describeInstances:
+  handler: ec2/describeInstances.handler
+  events:
+    - http: 
+        path: ec2/instances/describe
+        method: get
+startInstances:
+  handler: ec2/startInstances.handler
+  events:
+    - http:
+        path: ec2/instances/start
+        method: post
+stopInstances:
+  handler: ec2/stopInstances.handler
+  events:
+    - http: 
+        path: ec2/instances/stop
+        method: post
+createInstances:
+  handler: ec2/createInstance.handler
+  events:
+    - http: 
+        path: ec2/create-instance
+        method: post

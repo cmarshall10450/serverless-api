@@ -1,0 +1,29 @@
+{
+  "name": "discovery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@serverless/serverless-event-gateway-plugin": "^0.6.1",
+    "aws-sdk": "^2.275.1",
+    "axios": "^0.18.0",
+    "axios-timing": "^1.0.1",
+    "bluebird": "^3.5.1",
+    "jsonexport": "^2.2.1",
+    "jsonwebtoken": "^8.3.0",
+    "moment": "^2.22.2",
+    "node-fetch": "^2.1.2",
+    "node-fetch-fix": "^1.1.1",
+    "node-utils": "^0.0.2",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2",
+    "serverless-plugin-include-dependencies": "^3.1.0"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,31 @@
+listObjects:
+  handler: s3/listObjects.handler
+  events:
+    - http:
+        path: s3/list-objects/{bucket}
+        method: get
+        authorizer: authorize
+        request:
+          parameters:
+            path:
+              bucket: true
+getObject:
+  handler: s3/getObject.handler
+  events:
+    - http:
+        path: s3/get-object/
+        method: get
+select:
+  handler: s3/select.handler
+  events:
+    - http:
+        path: s3/select/
+        method: get
+        request:
+          parameters:
+            querystrings:
+              bucket: true
+              key: true
+              expression: true
+upload:
+  handler: s3/upload.handler

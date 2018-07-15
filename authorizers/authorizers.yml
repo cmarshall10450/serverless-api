@@ -1,0 +1,9 @@
+authorize:
+  handler: authorizers/authorizer.handler
+generateToken:
+  handler: authorizers/generateToken.handler
+  events:
+    - http:
+        path: register
+        method: post
+        private: true

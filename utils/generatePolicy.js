@@ -4,29 +4,25 @@ const generatePolicy = (token, methodArn) => {
   const decodedToken = decodeToken(token)
   if (decodedToken !== null) {
     const { user } = decodedToken
+    console.log('User:', user)
     return generatePolicyDocument(user, 'Allow', methodArn)
   } else {
     throw new Error('Unauthorized')
   }
 }
 
-const generatePolicyDocument = (principalId, effect, resource) => {
+const generatePolicyDocument = function (principalId, effect, resource) {
   const authResponse = {}
   authResponse.principalId = principalId
-
   if (effect && resource) {
     const policyDocument = {}
-    policyDocument.Version = '2012-10-17'
-    policyDocument.Statement = {}
-
-    const statement = {}
-    statement.Action = 'execute-api:Invoke'
-    statement.Effect = effect
-    statement.Resource = resource
-
-    console.log('Statement:', statement)
-
-    policyDocument.Statement[0] = statement
+    policyDocument.Version = '2012-10-17' // default version
+    policyDocument.Statement = []
+    const statementOne = {}
+    statementOne.Action = 'execute-api:Invoke' // default action
+    statementOne.Effect = effect
+    statementOne.Resource = resource
+    policyDocument.Statement[0] = statementOne
     authResponse.policyDocument = policyDocument
   }
 

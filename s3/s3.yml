@@ -15,12 +15,14 @@ getObject:
     - http:
         path: s3/get-object/
         method: get
+        authorizer: authorize
 select:
   handler: s3/select.handler
   events:
     - http:
         path: s3/select/
         method: get
+        authorizer: authorize
         request:
           parameters:
             querystrings:

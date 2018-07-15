@@ -1,24 +1,28 @@
 describeInstances:
   handler: ec2/describeInstances.handler
   events:
-    - http: 
+    - http:
         path: ec2/instances/describe
         method: get
+        authorizer: authorize
 startInstances:
   handler: ec2/startInstances.handler
   events:
     - http:
         path: ec2/instances/start
         method: post
+        authorizer: authorize
 stopInstances:
   handler: ec2/stopInstances.handler
   events:
-    - http: 
+    - http:
         path: ec2/instances/stop
         method: post
+        authorizer: authorize
 createInstances:
   handler: ec2/createInstance.handler
   events:
-    - http: 
+    - http:
         path: ec2/create-instance
         method: post
+        authorizer: authorize
